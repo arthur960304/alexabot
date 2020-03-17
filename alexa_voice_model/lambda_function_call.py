@@ -22,8 +22,8 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 bucket_name = 'bucket_name'
-ACCESS_KEY = 'XXXXXXXXXXXXXXXXXXXX'
-SECRET_KEY = 'XXXXXXXXXXXXXXXXXXXX'
+ACCESS_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXX'
+SECRET_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXX'
 
 client = boto3.client("s3",
     aws_access_key_id=ACCESS_KEY,
@@ -42,48 +42,20 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Absolutely no problem! What is your plan?"
-        reprompt_text = "Sorry, can you repeat again?"
-
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
-                .ask(reprompt_text)
-                .response
-        )
-
-class CaptureInfoIntentHandler(AbstractRequestHandler):
-    """Handler for capturing the information Intent."""
-    def can_handle(self, handler_input):
-        # type: (HandlerInput) -> bool
-        return ask_utils.is_intent_name("CaptureInfoIntent")(handler_input)
-
-    def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-        s = ''
-
-        slots = handler_input.request_envelope.request.intent.slots
-        fruit = slots['fruit'].value; s = s+str(fruit)+",";
-        place = slots['place'].value; s = s+str(place)+",";
-        name = slots['name'].value;   s = s+str(name);   
-        speak_output = "No problem! I would send {fruit} to {name} located at place {place}".format(fruit=fruit, name=name, place=place)
+        speak_output = "Sure. I am coming to you right now"
+        #reprompt_text = "Sorry, can you repeat again?"
 
         # Change topic, qos and payload
         response = mqtt_pub.publish(
             topic='alexabot_commands',
             qos=0,
-            payload = json.dumps({"location":str(place)})
+            payload = json.dumps({"location":"1"})
             )
-
-        #file = open("record.txt","w").write(s.encode("utf-8")) 
-        #bucket_resource.upload_file(Bucket = bucket_name,Filename=file, Key=file)
-        file_name = "record.txt"
-        client.put_object(Bucket=bucket_name, Key=file_name, Body=s)
 
         return (
             handler_input.response_builder
                 .speak(speak_output)
-                # .ask("add a reprompt if you want to keep the session open for the user to respond")
+                #.ask(reprompt_text)
                 .response
         )
 
@@ -192,7 +164,6 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
 sb = SkillBuilder()
 
 sb.add_request_handler(LaunchRequestHandler())
-sb.add_request_handler(CaptureInfoIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())
