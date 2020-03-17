@@ -66,13 +66,13 @@ sudo services mosquitto stop
     │   ├── lambda_function_template.py
     │   └── lambda_rate.py
     ├── alexabot                  # Turtlebot scripts
+    │   ├── CMakeLists.txt
+    │   ├── package.xml
     │   ├── src                   # Source scripts folder
     │   │   ├── voice_command.py  # Subscribe topics from MQTT broker and publish ROS service
     │   │   └── controller.py     # Subscribe ROS service and publish navigation goal
     │   ├── srv                   # ROS service folder
     │   └── Command.srv           # command service
-    │   ├── CMakeLists.txt
-    │   └── package.xml
     └── README.md
 
 ## Running the test
