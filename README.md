@@ -81,23 +81,34 @@ sudo services mosquitto stop
 ## Launch the test
 
 1. Run the mosquitto 
-`sudo mosquitto -c /etc/mosquitto/conf.d/bridge.conf`
+```
+sudo mosquitto -c /etc/mosquitto/conf.d/bridge.conf
+```
 
 2. Bring up the Turtlebot
-`roslaunch turtlebot_bringup minimal.launch`
+```
+roslaunch turtlebot_bringup minimal.launch
+```
 
-3. Launch the amcl
-`roslaunch turtlebot_navigation amcl_demo.launch map_file:=/tmp/XXX.yaml`
+3. Launch the amcl and specify your map file
+```
+roslaunch turtlebot_navigation amcl_demo.launch map_file:=/tmp/XXX.yaml
+```
 
 4. Launch the Rviz
-`roslaunch turtlebot_rviz_launchers view_navigation.launch`
+```
+roslaunch turtlebot_rviz_launchers view_navigation.launch
+```
 
 5. Modify line 23 to your ip address and run `voice_command.py`
-`python voice_command.py`
+```
+python voice_command.py
+```
 
 6. Run `controller.py`
-``python controller.py
-
+```
+python controller.py
+```
 
 ## Implementations
 
