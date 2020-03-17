@@ -102,7 +102,7 @@ roslaunch turtlebot_rviz_launchers view_navigation.launch
 python voice_command.py
 ```
 
-6. Run `controller.py`
+6. Run `controller.py`, you may change the xy-coordinate of your interested points in the file
 ```
 python controller.py
 ```
