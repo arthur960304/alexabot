@@ -15,6 +15,10 @@ These instructions will get you a copy of the project up and running on your loc
 * Amazon Echo Dot - [Buy on Amazon](https://www.amazon.com/Echo-Dot/dp/B07FZ8S74R)
 * Amazon Web Services - [Create an AWS account](https://aws.amazon.com/)
 
+### Experimental Process
+
+<img src="https://github.com/arthur960304/alexabot/blob/master/pic/steps.jpeg" alt="layout" width="800" />
+
 ### Mapping
 Build a map in an unknown environment using keyboard teleoperation.
 
@@ -22,6 +26,8 @@ For detailed implementation, see this [tutorial](http://edu.gaitech.hk/turtlebot
 
 ### MQTT Connection
 Connect ROS with AWS using MQTT protocol.
+
+<img src="https://github.com/arthur960304/alexabot/blob/master/pic/MQTT.jpeg" alt="layout" width="800" />
 
 1. Go through this [tutorial](https://aws.amazon.com/tw/blogs/iot/how-to-bridge-mosquitto-mqtt-broker-to-aws-iot/?fbclid=IwAR0JU9mTSQ0NK70NBHrmnJj0uvuTxwqqM1_K0rjpRAIczNOu5rWWAC2U2pg).
 
@@ -56,6 +62,13 @@ sudo services mosquitto stop
 
 ### Amazon skills
 
+Use the Alexa skills console to build a skill for Alexa.
+
+1. Read this [tutorial](https://developer.amazon.com/en-US/alexa/alexa-skills-kit/get-deeper/tutorials-code-samples/build-an-engaging-alexa-skill) and go through all steps in it.
+
+2. Since that we need a place to store variables, it requires the Amazon S3, the service in AWS. Therefore, we need an AWS account to access these functions. For more details, visit [here](https://aws.amazon.com/tw/console/).
+
+3. To access the variables we stored, we use the AWS Lambda function to connect with the Alexa skill. Look [here](https://developer.amazon.com/en-US/docs/alexa/custom-skills/host-a-custom-skill-as-an-aws-lambda-function.html) for more details.
 
 ## Code organization
 
