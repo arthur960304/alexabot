@@ -1,6 +1,6 @@
 # Alexabot
 
-Alexabot is a SLAM mapping and autonomous navigation system built on the Turtlebot ros navigation stack. This package uses voice command based control, and delivers command messages via MQTT protocol.
+The target of Alexabot is to receive the command from humans, extract the useful information from human's response such as the destination, and move to the assigned position. It is an autonomous navigation system built on the Turtlebot ros navigation stack. This package uses voice-based control, processing verbal sequences with Alexa skills, and delivering commands via MQTT protocol.
 
 ## Getting Started
 
